@@ -1,6 +1,6 @@
 import streamlit as st
 
-# Placeholder functions for risk algorithms (using general guidelines for stratification)
+# Placeholder functions for risk algorithms
 def calculate_cardio_risk(age, systolic_bp, smoker, cholesterol):
     risk_score = (age * 0.1) + (systolic_bp * 0.05) + (10 if smoker else 0) + (cholesterol * 0.02)
     return "High" if risk_score > 15 else "Moderate" if risk_score > 10 else "Low"
@@ -122,7 +122,7 @@ with tab3:
 # Asthma Risk Tab
 with tab4:
     st.header("Asthma Risk Assessment")
-    frequency_of_symptoms = st.slider("Frequency of Asthma Symptoms (0-7 days/week)", 0, 7, 2)
+    frequency_of_symptoms = st.slider("Frequency of Symptoms (0-7 days/week)", 0, 7, 2)
     nighttime_symptoms = st.slider("Nighttime Symptoms (0-7 days/week)", 0, 7, 1)
     inhaler_use = st.slider("Inhaler Use (0-7 days/week)", 0, 7, 2)
     fev1_asthma = st.number_input("FEV1 (%) - Asthma", min_value=20, max_value=100, value=80)
@@ -142,69 +142,57 @@ with tab5:
             if risk == "High":
                 st.write(f"- **{condition} - High Risk**: Intensive care plan with evidence-based guidelines:")
                 if condition == "Cardiovascular":
-                    st.write("- **Self-Management Support**: Medication adherence, regular exercise, and dietary changes as per AHA.\n"
-                             "- **Decision Support**: Schedule monthly follow-ups, focus on lifestyle modifications.\n"
-                             "- **Delivery System Design**: Regular monitoring of vital signs and medication adjustments.\n"
-                             "- **Community Resources**: Refer to local support groups and educational workshops.")
+                    st.write("- **Management Plan**: Aggressive management with medication adjustments and close monitoring.\n"
+                             "- **Follow-Up**: Weekly visits for blood pressure and symptom monitoring.\n"
+                             "- **Expected Outcomes**: Improved symptom management, reduced hospitalizations, and enhanced quality of life.")
                 elif condition == "Diabetes":
-                    st.write("- **Self-Management Support**: Encourage daily blood glucose monitoring and dietary adjustments as per ADA.\n"
-                             "- **Decision Support**: Quarterly follow-ups for HbA1c monitoring and adjustment of treatment.\n"
-                             "- **Delivery System Design**: Ensure access to diabetes education programs.\n"
-                             "- **Community Resources**: Connect to local diabetes associations for support.")
+                    st.write("- **Management Plan**: Intensive lifestyle modification with regular glucose monitoring and medication management.\n"
+                             "- **Follow-Up**: Monthly assessments of HbA1c and lifestyle factors.\n"
+                             "- **Expected Outcomes**: Stabilized blood glucose levels and prevention of complications.")
                 elif condition == "COPD":
-                    st.write("- **Self-Management Support**: Implement daily symptom tracking and proper inhaler use as per GOLD.\n"
-                             "- **Decision Support**: Schedule follow-ups every month to adjust medication.\n"
-                             "- **Delivery System Design**: Facilitate access to pulmonary rehabilitation.\n"
-                             "- **Community Resources**: Local COPD support groups and educational resources.")
+                    st.write("- **Management Plan**: Ensure adherence to inhaler techniques and provide pulmonary rehabilitation.\n"
+                             "- **Follow-Up**: Monthly visits to evaluate lung function and adjust therapy as needed.\n"
+                             "- **Expected Outcomes**: Reduced exacerbations and improved lung function.")
                 elif condition == "Asthma":
-                    st.write("- **Self-Management Support**: Monitor symptoms daily and utilize an asthma action plan as per GINA.\n"
-                             "- **Decision Support**: Regular follow-ups every three months for medication adjustment.\n"
-                             "- **Delivery System Design**: Access to allergen avoidance strategies and trigger management.\n"
-                             "- **Community Resources**: Local asthma education and support services.")
+                    st.write("- **Management Plan**: Daily monitoring of symptoms with an asthma action plan.\n"
+                             "- **Follow-Up**: Regular visits every three months to assess control and adjust medications.\n"
+                             "- **Expected Outcomes**: Well-controlled asthma and improved quality of life.")
             elif risk == "Moderate":
                 st.write(f"- **{condition} - Moderate Risk**: Intermediate care plan with CCM recommendations:")
                 if condition == "Cardiovascular":
-                    st.write("- **Self-Management Support**: Encourage lifestyle changes, provide tools for tracking symptoms, and set achievable health goals.\n"
-                             "- **Decision Support**: Schedule quarterly check-ups with a focus on preventive care.\n"
-                             "- **Delivery System Design**: Semi-annual follow-up visits, proactive medication adjustments, and referral as needed.\n"
-                             "- **Community Resources**: Connect with local health education resources.")
+                    st.write("- **Management Plan**: Lifestyle changes with medication review and adjustment as needed.\n"
+                             "- **Follow-Up**: Bi-monthly visits to track health status.\n"
+                             "- **Expected Outcomes**: Improved risk factors and prevention of progression.")
                 elif condition == "Diabetes":
-                    st.write("- **Self-Management Support**: Encourage lifestyle changes, provide tools for tracking symptoms, and set achievable health goals.\n"
-                             "- **Decision Support**: Schedule quarterly check-ups with a focus on preventive care.\n"
-                             "- **Delivery System Design**: Semi-annual follow-up visits, proactive medication adjustments, and referral as needed.\n"
-                             "- **Community Resources**: Connect with local health education resources.")
+                    st.write("- **Management Plan**: Encourage physical activity and dietary changes with medication adjustments.\n"
+                             "- **Follow-Up**: Quarterly HbA1c monitoring and lifestyle counseling.\n"
+                             "- **Expected Outcomes**: Improved metabolic control and prevention of complications.")
                 elif condition == "COPD":
-                    st.write("- **Self-Management Support**: Encourage lifestyle changes, provide tools for tracking symptoms, and set achievable health goals.\n"
-                             "- **Decision Support**: Schedule quarterly check-ups with a focus on preventive care.\n"
-                             "- **Delivery System Design**: Semi-annual follow-up visits, proactive medication adjustments, and referral as needed.\n"
-                             "- **Community Resources**: Connect with local health education resources.")
+                    st.write("- **Management Plan**: Implement a smoking cessation program and monitor symptoms.\n"
+                             "- **Follow-Up**: Every two months to assess adherence and lung function.\n"
+                             "- **Expected Outcomes**: Stabilization of lung function and reduced symptoms.")
                 elif condition == "Asthma":
-                    st.write("- **Self-Management Support**: Encourage lifestyle changes, provide tools for tracking symptoms, and set achievable health goals.\n"
-                             "- **Decision Support**: Schedule quarterly check-ups with a focus on preventive care.\n"
-                             "- **Delivery System Design**: Semi-annual follow-up visits, proactive medication adjustments, and referral as needed.\n"
-                             "- **Community Resources**: Connect with local health education resources.")
+                    st.write("- **Management Plan**: Regular monitoring and education on trigger management.\n"
+                             "- **Follow-Up**: Bi-monthly follow-ups to assess symptom control and medication effectiveness.\n"
+                             "- **Expected Outcomes**: Decreased exacerbations and improved asthma control.")
             else:
                 st.write(f"- **{condition} - Low Risk**: Preventive and maintenance plan based on CCM recommendations.")
                 if condition == "Cardiovascular":
-                    st.write("- **Self-Management Support**: Encourage regular health checks and adherence to preventive lifestyle practices.\n"
-                             "- **Decision Support**: Annual review of patient health status.\n"
-                             "- **Delivery System Design**: Ensure primary care check-ups annually or biannually.\n"
-                             "- **Community Resources**: Provide information on health maintenance resources.")
+                    st.write("- **Management Plan**: Maintain healthy lifestyle practices and routine monitoring.\n"
+                             "- **Follow-Up**: Annual check-ups for preventive care.\n"
+                             "- **Expected Outcomes**: Continued health maintenance and prevention of future risk.")
                 elif condition == "Diabetes":
-                    st.write("- **Self-Management Support**: Encourage regular health checks and adherence to preventive lifestyle practices.\n"
-                             "- **Decision Support**: Annual review of patient health status.\n"
-                             "- **Delivery System Design**: Ensure primary care check-ups annually or biannually.\n"
-                             "- **Community Resources**: Provide information on health maintenance resources.")
+                    st.write("- **Management Plan**: Routine monitoring of glucose levels and lifestyle practices.\n"
+                             "- **Follow-Up**: Annual check-up to assess health status.\n"
+                             "- **Expected Outcomes**: Effective long-term management of health status.")
                 elif condition == "COPD":
-                    st.write("- **Self-Management Support**: Encourage regular health checks and adherence to preventive lifestyle practices.\n"
-                             "- **Decision Support**: Annual review of patient health status.\n"
-                             "- **Delivery System Design**: Ensure primary care check-ups annually or biannually.\n"
-                             "- **Community Resources**: Provide information on health maintenance resources.")
+                    st.write("- **Management Plan**: Encourage regular exercise and pulmonary hygiene.\n"
+                             "- **Follow-Up**: Annual assessments of lung function.\n"
+                             "- **Expected Outcomes**: Maintenance of lung health and prevention of complications.")
                 elif condition == "Asthma":
-                    st.write("- **Self-Management Support**: Encourage regular health checks and adherence to preventive lifestyle practices.\n"
-                             "- **Decision Support**: Annual review of patient health status.\n"
-                             "- **Delivery System Design**: Ensure primary care check-ups annually or biannually.\n"
-                             "- **Community Resources**: Provide information on health maintenance resources.")
+                    st.write("- **Management Plan**: Adhere to preventive medication and avoid triggers.\n"
+                             "- **Follow-Up**: Annual assessments of asthma control and medication needs.\n"
+                             "- **Expected Outcomes**: Effective asthma management with reduced risk of exacerbations.")
 
 # AI Assistant Tab
 with tab6:
